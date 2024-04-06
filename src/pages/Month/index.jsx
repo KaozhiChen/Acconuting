@@ -1,6 +1,6 @@
 import { NavBar, DatePicker } from 'antd-mobile';
 import './index.scss';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import dayjs from 'dayjs';
 import _ from 'lodash';
@@ -19,7 +19,6 @@ const Month = () => {
     //return the calculated value
     return _.groupBy(billList, (item) => dayjs(item.date).format('YYYY-MM'));
   }, [billList]);
-  console.log(monthGroup);
 
   const [currentMonthList, setCurrentMonthList] = useState([]);
 
@@ -38,6 +37,15 @@ const Month = () => {
     };
   }, [currentMonthList]);
 
+  //Display initial data during initialization
+  useEffect(() => {
+    const now = dayjs().format('YYYY-MM');
+    if (monthGroup[now]) {
+      setCurrentMonthList(monthGroup[now]);
+    }
+  }, [monthGroup]);
+
+  //confirm
   const clickConfirm = (date) => {
     setDateVisible(false);
     const formatDate = dayjs(date).format('YYYY-MM');
