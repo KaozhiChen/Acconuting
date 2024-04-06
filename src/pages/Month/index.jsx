@@ -21,9 +21,27 @@ const Month = () => {
   }, [billList]);
   console.log(monthGroup);
 
+  const [currentMonthList, setCurrentMonthList] = useState([]);
+
+  const monthBalance = useMemo(() => {
+    //pay, income, balance
+    const pay = currentMonthList
+      .filter((item) => item.type === 'pay')
+      .reduce((a, c) => a + c.money, 0);
+    const income = currentMonthList
+      .filter((item) => item.type === 'income')
+      .reduce((a, c) => a + c.money, 0);
+    return {
+      pay,
+      income,
+      balance: pay + income,
+    };
+  }, [currentMonthList]);
+
   const clickConfirm = (date) => {
     setDateVisible(false);
     const formatDate = dayjs(date).format('YYYY-MM');
+    setCurrentMonthList(monthGroup[formatDate] || []);
     setCurrentDate(formatDate);
   };
 
@@ -42,15 +60,15 @@ const Month = () => {
           {/* 统计区域 */}
           <div className='twoLineOverview'>
             <div className='item'>
-              <span className='money'>{100}</span>
+              <span className='money'>{monthBalance.pay.toFixed(2)}</span>
               <span className='type'>支出</span>
             </div>
             <div className='item'>
-              <span className='money'>{200}</span>
+              <span className='money'>{monthBalance.income.toFixed(2)}</span>
               <span className='type'>收入</span>
             </div>
             <div className='item'>
-              <span className='money'>{200}</span>
+              <span className='money'>{monthBalance.balance.toFixed(2)}</span>
               <span className='type'>结余</span>
             </div>
           </div>
