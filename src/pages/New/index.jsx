@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { addBillList } from '../../store/modules/billStore';
 import { useDispatch } from 'react-redux';
 import dayjs from 'dayjs';
-import food from '../../images/icons/food.svg';
+
 const New = () => {
   const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ const New = () => {
   const [billType, setBillType] = useState('pay');
   const dispatch = useDispatch();
 
-  const [money, setMoney] = useState(0);
+  const [money, setMoney] = useState();
   const moneyChange = (value) => {
     setMoney(value);
   };
@@ -35,7 +35,6 @@ const New = () => {
       //useFor
       useFor: useFor,
     };
-    console.log(data);
     // submit form
     dispatch(addBillList(data));
   };
@@ -144,8 +143,6 @@ const New = () => {
             </div>
           );
         })}
-
-        <img src={food} alt='' className='fuck' />
       </div>
 
       <div className='btns'>

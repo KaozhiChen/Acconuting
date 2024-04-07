@@ -111,6 +111,12 @@
       "money": -20,
       "date": "2024-04-03T04:00:00.000Z",
       "useFor": "food"
+    },
+    {
+      "id": "6e28",
+      "type": "pay",
+      "money": -200,
+      "useFor": "food"
     }
   ]
 }
