@@ -104,6 +104,13 @@
       "money": -110,
       "date": "2024-04-07T12:41:53.271Z",
       "useFor": "drinks"
+    },
+    {
+      "id": "c24e",
+      "type": "pay",
+      "money": -20,
+      "date": "2024-04-03T04:00:00.000Z",
+      "useFor": "food"
     }
   ]
 }
