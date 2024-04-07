@@ -59,7 +59,7 @@ export const billListData = {
       name: '其他收入',
       list: [
         { type: 'financial', name: '理财收入' },
-        { type: 'cashgift', name: '礼金收入' },
+        { type: 'parttime', name: '礼金收入' },
       ],
     },
   ],

@@ -1,7 +1,24 @@
+import React, { useState, useEffect } from 'react';
+
 const Icon = ({ type }) => {
+  const [iconPath, setIconPath] = useState(null);
+
+  useEffect(() => {
+    import(`../../images/icons/${type}.svg`)
+      .then((icon) => {
+        setIconPath(icon.default);
+      })
+      .catch((error) => {
+        console.error('Failed to load icon:', error);
+      });
+  }, [type]);
+
+  if (!iconPath) {
+    return null;
+  }
   return (
     <img
-      src={`https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/reactbase/ka/${type}.svg`}
+      src={iconPath}
       alt='icon'
       style={{
         width: 20,

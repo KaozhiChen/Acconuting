@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { addBillList } from '../../store/modules/billStore';
 import { useDispatch } from 'react-redux';
 import dayjs from 'dayjs';
-
+import food from '../../images/icons/food.svg';
 const New = () => {
   const navigate = useNavigate();
 
@@ -144,6 +144,8 @@ const New = () => {
             </div>
           );
         })}
+
+        <img src={food} alt='' className='fuck' />
       </div>
 
       <div className='btns'>
