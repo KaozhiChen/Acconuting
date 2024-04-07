@@ -16,6 +16,7 @@ const Month = () => {
 
   //billList
   const billList = useSelector((state) => state.bill.billList);
+  //Group according month
   const monthGroup = useMemo(() => {
     //return the calculated value
     return _.groupBy(billList, (item) => dayjs(item.date).format('YYYY-MM'));
@@ -53,6 +54,19 @@ const Month = () => {
     setCurrentMonthList(monthGroup[formatDate] || []);
     setCurrentDate(formatDate);
   };
+
+  //Group according days
+  const dayGroup = useMemo(() => {
+    //return the calculated value
+    const groupDay = _.groupBy(currentMonthList, (item) =>
+      dayjs(item.date).format('YYYY-MM-DD')
+    );
+    const keys = Object.keys(groupDay);
+    return {
+      groupDay,
+      keys,
+    };
+  }, [currentMonthList]);
 
   return (
     <div className='monthlyBill'>
@@ -94,7 +108,12 @@ const Month = () => {
           />
         </div>
         {/*当日列表*/}
-        <DailyBill />
+
+        {dayGroup.keys.map((key) => {
+          return (
+            <DailyBill key={key} date={key} billList={dayGroup.groupDay[key]} />
+          );
+        })}
       </div>
     </div>
   );
