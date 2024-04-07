@@ -5,13 +5,15 @@ import classNames from 'classnames';
 import { billListData } from '../../contants';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { values } from 'lodash';
+import { addBillList } from '../../store/modules/billStore';
+import { useDispatch } from 'react-redux';
 
 const New = () => {
   const navigate = useNavigate();
 
   //control the bill types
   const [billType, setBillType] = useState('pay');
+  const dispatch = useDispatch();
 
   const [money, setMoney] = useState(0);
   const moneyChange = (value) => {
@@ -33,6 +35,8 @@ const New = () => {
       useFor: useFor,
     };
     console.log(data);
+    // submit form
+    dispatch(addBillList(data));
   };
 
   return (
