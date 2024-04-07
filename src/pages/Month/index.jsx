@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import dayjs from 'dayjs';
 import _ from 'lodash';
+import DailyBill from './components/DayBill';
 
 const Month = () => {
   const [dateVisible, setDateVisible] = useState(false);
@@ -92,6 +93,8 @@ const Month = () => {
             max={new Date()}
           />
         </div>
+        {/*当日列表*/}
+        <DailyBill />
       </div>
     </div>
   );
