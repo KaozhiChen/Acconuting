@@ -117,6 +117,75 @@
       "type": "pay",
       "money": -200,
       "useFor": "food"
+    },
+    {
+      "id": "8546",
+      "type": "income",
+      "money": 1111,
+      "date": "2024-04-05T04:00:00.000Z",
+      "useFor": "salary"
+    },
+    {
+      "id": "bbcd",
+      "type": "pay",
+      "money": -500,
+      "useFor": "food"
+    },
+
+    {
+      "id": "093e",
+      "type": "pay",
+      "money": -12,
+      "useFor": "food"
+    },
+    {
+      "id": "d84a",
+      "type": "pay",
+      "money": -12,
+      "date": "2024-04-06T04:00:00.000Z",
+      "useFor": "food"
+    },
+
+    {
+      "id": "f6b2",
+      "type": "pay",
+      "money": -12,
+      "useFor": "drinks"
+    },
+    {
+      "id": "15b4",
+      "type": "income",
+      "money": 12,
+      "useFor": "overtimepay"
+    },
+
+    {
+      "id": "fe30",
+      "type": "pay",
+      "money": -44,
+      "date": "2024-04-06T04:00:00.000Z",
+      "useFor": "dessert"
+    },
+    {
+      "id": "2515",
+      "type": "pay",
+      "money": -22,
+      "date": "2024-04-06T04:00:00.000Z",
+      "useFor": "dessert"
+    },
+    {
+      "id": "2320",
+      "type": "pay",
+      "money": -22,
+      "date": "2024-04-06T04:00:00.000Z",
+      "useFor": "dessert"
+    },
+    {
+      "id": "d219",
+      "type": "pay",
+      "money": -22,
+      "date": "2024-04-06T04:00:00.000Z",
+      "useFor": "dessert"
     }
   ]
 }

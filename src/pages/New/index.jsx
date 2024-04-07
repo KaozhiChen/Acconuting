@@ -1,4 +1,5 @@
-import { Button, DatePicker, Input, NavBar } from 'antd-mobile';
+import { Button, Modal, DatePicker, Input, Toast, NavBar } from 'antd-mobile';
+
 import Icon from '../../components/Icon';
 import './index.scss';
 import classNames from 'classnames';
@@ -35,8 +36,38 @@ const New = () => {
       //useFor
       useFor: useFor,
     };
+
     // submit form
-    dispatch(addBillList(data));
+    if (data.type && data.money && data.date && data.useFor) {
+      dispatch(addBillList(data));
+      // Modal.alert({
+      //   title: '添加成功！',
+      //   showCloseButton: true,
+      //   onConfirm: () => {
+      //     setMoney('');
+      //     setUseFor('');
+      //   },
+      // });
+      Modal.confirm({
+        content: '是否提交申请',
+        onConfirm: () => {
+          setTimeout(() => {
+            Toast.show({
+              icon: 'success',
+              content: '提交成功',
+              position: 'bottom',
+            });
+          }, 1000);
+          // setMoney('');
+          // setUseFor('');
+        },
+      });
+    } else {
+      Modal.alert({
+        title: '添加失败！请填入金额以及选择相应类型',
+        showCloseButton: true,
+      });
+    }
   };
 
   //confirm selceted date
