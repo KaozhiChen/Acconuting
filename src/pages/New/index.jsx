@@ -40,14 +40,6 @@ const New = () => {
     // submit form
     if (data.type && data.money && data.date && data.useFor) {
       dispatch(addBillList(data));
-      // Modal.alert({
-      //   title: '添加成功！',
-      //   showCloseButton: true,
-      //   onConfirm: () => {
-      //     setMoney('');
-      //     setUseFor('');
-      //   },
-      // });
       Modal.confirm({
         content: '是否提交申请',
         onConfirm: () => {
@@ -57,9 +49,10 @@ const New = () => {
               content: '提交成功',
               position: 'bottom',
             });
-          }, 1000);
-          // setMoney('');
-          // setUseFor('');
+            setMoney('');
+            setUseFor('');
+            setDate(dayjs(new Date()).format('YYYY-MM-DD'));
+          }, 500);
         },
       });
     } else {

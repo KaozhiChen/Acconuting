@@ -131,7 +131,6 @@
       "money": -500,
       "useFor": "food"
     },
-
     {
       "id": "093e",
       "type": "pay",
@@ -145,7 +144,6 @@
       "date": "2024-04-06T04:00:00.000Z",
       "useFor": "food"
     },
-
     {
       "id": "f6b2",
       "type": "pay",
@@ -158,7 +156,6 @@
       "money": 12,
       "useFor": "overtimepay"
     },
-
     {
       "id": "fe30",
       "type": "pay",
