@@ -1,5 +1,4 @@
 import { Button, Modal, DatePicker, Input, Toast, NavBar } from 'antd-mobile';
-
 import Icon from '../../components/Icon';
 import './index.scss';
 import classNames from 'classnames';
@@ -12,32 +11,36 @@ import dayjs from 'dayjs';
 
 const New = () => {
   const navigate = useNavigate();
-
-  //control the bill types
-  const [billType, setBillType] = useState('pay');
   const dispatch = useDispatch();
 
-  const [money, setMoney] = useState();
+  // Control the bill types
+  const [billType, setBillType] = useState('pay');
+
+  // Initialize date with current date
+  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [dateVisible, setDateVisible] = useState(false);
+
+  const [money, setMoney] = useState('');
   const moneyChange = (value) => {
     setMoney(value);
   };
 
   const [useFor, setUseFor] = useState('');
 
-  //collect bill data
+  // Collect bill data
   const saveBill = () => {
     const data = {
-      //1.bill type
+      // 1. Bill type
       type: billType,
-      //2.money
+      // 2. Money
       money: billType === 'pay' ? -money : +money,
-      //date
+      // Date
       date: date,
-      //useFor
+      // Use for
       useFor: useFor,
     };
 
-    // submit form
+    // Submit form
     if (data.type && data.money && data.date && data.useFor) {
       dispatch(addBillList(data));
       Modal.confirm({
@@ -51,7 +54,7 @@ const New = () => {
             });
             setMoney('');
             setUseFor('');
-            setDate(dayjs(new Date()).format('YYYY-MM-DD'));
+            setDate(dayjs().format('YYYY-MM-DD'));
           }, 500);
         },
       });
@@ -63,14 +66,9 @@ const New = () => {
     }
   };
 
-  //confirm selceted date
-  const [date, setDate] = useState();
-
-  //dateVisible
-  const [dateVisible, setDateVisible] = useState(false);
-  // dateConfirm
+  // Date confirm
   const dateConfirm = (value) => {
-    setDate(value);
+    setDate(dayjs(value).format('YYYY-MM-DD'));
     setDateVisible(false);
   };
 
@@ -104,7 +102,7 @@ const New = () => {
 
         <div className='kaFormWrapper'>
           <div className='kaForm'>
-            {/* date selector */}
+            {/* Date selector */}
             <div className='date'>
               <Icon type='calendar' className='icon' />
               <span
@@ -113,7 +111,7 @@ const New = () => {
                   setDateVisible(true);
                 }}
               >
-                {dayjs(date).format('YYYY-MM-DD')}
+                {date}
               </span>
               <DatePicker
                 className='kaDate'
@@ -138,7 +136,7 @@ const New = () => {
       </div>
 
       <div className='kaTypeList'>
-        {/* data */}
+        {/* Data */}
         {billListData[billType].map((item) => {
           return (
             <div className='kaType' key={item.type}>
